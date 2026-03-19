@@ -1,3 +1,4 @@
+import allure
 
 from components.base_component import BaseComponent
 from elements.text import Text
@@ -50,6 +51,7 @@ class SubmissionSummaryComponent(BaseComponent):
             locator_strategy=LocatorStrategy.CSS
         )
 
+    @allure.step("Check submission summary form")
     def check_submission(self, name: str = "Name", email: str = "test@test.com", message: str = "Message"):
         self.name_label.check_visible()
         self.name_label.check_have_text("Name:")

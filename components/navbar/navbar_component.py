@@ -28,3 +28,12 @@ class NavbarComponent(BaseComponent):
         self.logo_link.check_have_attribute("href", "https://practice-automation.com/")
         self.courses_link.check_have_attribute("href", "https://automatenow-courses.teachable.com/")
         self.blog_link.check_have_attribute("href", "https://automatenow.io/")
+
+    def click_logo_link(self):
+        self.logo_link.click()
+
+    def click_courses_link(self):
+        self.courses_link.click()
+
+    def click_blog_link(self):
+        self.blog_link.click()

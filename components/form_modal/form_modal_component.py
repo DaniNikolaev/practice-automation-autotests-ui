@@ -1,3 +1,4 @@
+import allure
 from playwright.sync_api import Page
 
 from components.base_component import BaseComponent
@@ -87,6 +88,7 @@ class FormModalComponent(BaseComponent):
     def check_form_title_not_visible(self):
         self.form_title.check_not_visible()
 
+    @allure.step("Check form modal form")
     def check_form(self, name: str = "Name", email: str = "test@test.com", message: str = "Message"):
         self.name_label.check_visible()
         self.name_label.check_have_text("Name(required)")
@@ -100,6 +102,7 @@ class FormModalComponent(BaseComponent):
         self.message_label.check_have_text("Message")
         self.message_textarea.check_have_value(message)
 
+    @allure.step("Check form modal form is not visible")
     def check_form_not_visible(self):
         self.name_label.check_not_visible()
         self.name_input.check_not_visible()
@@ -108,6 +111,7 @@ class FormModalComponent(BaseComponent):
         self.message_label.check_not_visible()
         self.message_textarea.check_not_visible()
 
+    @allure.step("Fill form modal form")
     def fill_form(self, name: str = "Name", email: str = "test@test.com", message: str = "Message"):
         self.name_input.fill(name)
         self.email_input.fill(email)

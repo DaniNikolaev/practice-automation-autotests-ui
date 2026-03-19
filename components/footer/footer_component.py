@@ -34,3 +34,9 @@ class FooterComponent(BaseComponent):
         self.learn_more_link.check_have_attribute("href", "https://linktr.ee/automateNow")
         self.about_link.check_have_attribute("href", "https://automatenow.io/about/")
         self.to_top_link.check_have_attribute("href", "#body")
+
+    def click_learn_more_link(self):
+        self.learn_more_link.click()
+
+    def click_about_link(self):
+        self.about_link.click()

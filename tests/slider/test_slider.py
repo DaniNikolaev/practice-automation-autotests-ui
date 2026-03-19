@@ -2,10 +2,12 @@ import allure
 import pytest
 
 from pages.slider_page.slider_page import SliderPage
+from tools.allure.tags import AllureTag
 
 
 @pytest.mark.regression
 @pytest.mark.slider
+@allure.tag(AllureTag.SLIDER)
 class TestSlider:
     @allure.title("Test slider title and breadcrumbs")
     def test_slider_title_and_breadcrumbs(self, slider_page: SliderPage):

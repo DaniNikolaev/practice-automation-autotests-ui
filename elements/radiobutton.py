@@ -1,5 +1,6 @@
 import allure
 from playwright.sync_api import expect
+from ui_coverage_tool import ActionType
 
 from elements.base_element import BaseElement
 from tools.logger import get_logger
@@ -14,10 +15,16 @@ class Radiobutton(BaseElement):
 
     def select(self, nth: int = 0, **kwargs):
         locator = self.get_locator(nth, **kwargs)
-        with allure.step(f"Select {self.type_of} '{self.name}'"):
-            logger.info(f"Select {self.type_of} '{self.name}'")
+        step = f"Select {self.type_of} '{self.name}'"
+        with allure.step(step):
+            logger.info(step)
             locator.check()
+        self.track_coverage(action_type=ActionType.SELECT, nth=nth, **kwargs)
 
     def check_selected(self, nth: int = 0, **kwargs):
         locator = self.get_locator(nth, **kwargs)
-        expect(locator).to_be_checked()
+        step = f"Check {self.type_of} '{self.name}' is selected"
+        with allure.step(step):
+            logger.info(step)
+            expect(locator).to_be_checked()
+        self.track_coverage(action_type=ActionType.VALUE, nth=nth, **kwargs)

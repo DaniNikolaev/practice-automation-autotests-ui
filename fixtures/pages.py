@@ -3,7 +3,7 @@ from playwright.sync_api import Page
 
 from pages.click_events.events_page import EventsPage
 from pages.form_fields.forms_page import FormsPage
-from pages.main_page import MainPage
+from pages.main.main_page import MainPage
 from pages.modals.modals_page import ModalsPage
 from pages.popups.popups_page import PopupsPage
 from pages.slider_page.slider_page import SliderPage

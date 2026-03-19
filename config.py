@@ -12,16 +12,6 @@ class Browser(str, Enum):
     WEBKIT = "webkit"
 
 
-class TestUser(BaseModel):
-    email: str
-    username: str
-    password: str
-
-
-class TestData(BaseModel):
-    image_file: FilePath
-
-
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(
         extra="allow",
@@ -33,8 +23,6 @@ class Settings(BaseSettings):
     app_url: HttpUrl
     headless: bool
     browsers: list[Browser]
-    #test_user: TestUser
-    #test_data: TestData
     allure_results_dir: DirectoryPath | None = None
     videos_dir: DirectoryPath | None = None
     tracing_dir: DirectoryPath | None = None

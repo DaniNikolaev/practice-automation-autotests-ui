@@ -26,7 +26,7 @@ class Textarea(BaseElement):
             logger.info(step)
             locator.fill(value)
 
-        #self.track_coverage(action_type=ActionType.FILL, nth=nth, **kwargs)
+        self.track_coverage(action_type=ActionType.FILL, nth=nth, **kwargs)
 
     def clear(self, nth: int = 0, **kwargs):
         locator = self.get_locator(nth=nth, **kwargs)
@@ -42,4 +42,4 @@ class Textarea(BaseElement):
             logger.info(step)
             expect(locator).to_have_value(value)
 
-        #self.track_coverage(action_type=ActionType.VALUE, nth=nth, **kwargs)
+        self.track_coverage(action_type=ActionType.VALUE, nth=nth, **kwargs)

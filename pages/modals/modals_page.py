@@ -1,3 +1,4 @@
+import allure
 from playwright.sync_api import Page
 
 from components.footer.footer_component import FooterComponent
@@ -33,6 +34,7 @@ class ModalsPage(BasePage):
         self.form_modal = FormModalComponent(page)
         self.footer = FooterComponent(page)
 
+    @allure.step("Check modals title and breadcrumbs")
     def check_title_and_breadcrumbs(self):
         self.title_and_breadcrumbs.check_breadcrumbs_title()
         self.title_and_breadcrumbs.check_page_title()
@@ -70,16 +72,19 @@ class ModalsPage(BasePage):
         self.form_modal_button.check_visible()
         self.form_modal_button.check_enabled()
 
+    @allure.step("Check modals simple modal")
     def check_simple_modal(self):
         self.simple_modal.check_title()
         self.simple_modal.check_description()
         self.simple_modal.check_close_button()
 
+    @allure.step("Check modals simple modal is not visible")
     def check_simple_modal_not_visible(self):
         self.simple_modal.check_title_not_visible()
         self.simple_modal.check_description_not_visible()
         self.simple_modal.check_close_button_not_visible()
 
+    @allure.step("Check modals form modal")
     def check_form_modal(self):
         self.form_modal.check_title()
         self.form_modal.check_description()
@@ -90,6 +95,7 @@ class ModalsPage(BasePage):
         self.form_modal.check_after_form()
         self.form_modal.check_submit_button()
 
+    @allure.step("Check modals form modal is not visible")
     def check_form_modal_not_visible(self):
         self.form_modal.check_title_not_visible()
         self.form_modal.check_description_not_visible()

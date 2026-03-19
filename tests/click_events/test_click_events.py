@@ -2,10 +2,12 @@ import allure
 import pytest
 
 from pages.click_events.events_page import EventsPage
+from tools.allure.tags import AllureTag
 
 
 @pytest.mark.regression
 @pytest.mark.click_events
+@allure.tag(AllureTag.EVENTS)
 class TestClickEvents:
     @allure.title("Test click events title and breadcrumbs")
     def test_click_events_title_and_breadcrumbs(self, events_page: EventsPage):

@@ -1,3 +1,4 @@
+import allure
 from playwright.sync_api import Page
 
 from components.footer.footer_component import FooterComponent
@@ -24,6 +25,7 @@ class SliderPage(BasePage):
 
         self.footer = FooterComponent(page)
 
+    @allure.step("Check slider title and breadcrumbs")
     def check_title_and_breadcrumbs(self):
         self.title_and_breadcrumbs.check_breadcrumbs_title()
         self.title_and_breadcrumbs.check_page_title()
@@ -37,9 +39,6 @@ class SliderPage(BasePage):
 
     def move_slider(self, value: int):
         self.slider.set_value(value)
-
-    def move_slider_by_drag(self, value: int):
-        self.slider.set_value_by_drag(value)
 
     def check_slider_value(self, value: int = 25):
         self.slider.check_value(value)

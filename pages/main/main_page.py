@@ -27,6 +27,8 @@ class MainPage(BasePage):
                                     locator_strategy=LocatorStrategy.TEXT)
         self.slider_button = Button(page, 'Sliders', "Slider button",
                                     locator_strategy=LocatorStrategy.TEXT)
+        self.modals_button = Button(page, 'Modals', "Modals button",
+                                    locator_strategy=LocatorStrategy.TEXT)
 
         self.footer = FooterComponent(page)
 
@@ -45,21 +47,32 @@ class MainPage(BasePage):
 
     def check_forms_button(self):
         self.forms_button.check_visible()
+        self.forms_button.check_enabled()
 
     def click_events_button(self):
         self.events_button.click()
 
     def check_events_button(self):
         self.events_button.check_visible()
+        self.events_button.check_enabled()
 
     def click_popups_button(self):
         self.popups_button.click()
 
     def check_popups_button(self):
         self.popups_button.check_visible()
+        self.popups_button.check_enabled()
 
     def click_slider_button(self):
         self.slider_button.click()
 
     def check_slider_button(self):
         self.slider_button.check_visible()
+        self.slider_button.check_enabled()
+
+    def click_modals_button(self):
+        self.modals_button.click()
+
+    def check_modals_button(self):
+        self.modals_button.check_visible()
+        self.modals_button.check_enabled()

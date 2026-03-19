@@ -27,7 +27,7 @@ class Slider(BaseElement):
             locator.evaluate("el => el.dispatchEvent(new Event('input', { bubbles: true }))")
             locator.evaluate("el => el.dispatchEvent(new Event('change', { bubbles: true }))")
 
-        #self.track_coverage(action_type=ActionType.SET_VALUE, nth=nth, value=value, **kwargs)
+        self.track_coverage(action_type=ActionType.FILL, nth=nth, value=value, **kwargs)
 
     def get_value(self, nth: int = 0, **kwargs) -> int:
         locator = self.get_locator(nth, **kwargs)
@@ -45,4 +45,4 @@ class Slider(BaseElement):
             assert actual == expected_value, \
                 f"Expected slider value {expected_value}, but got {actual}"
 
-        #self.track_coverage(action_type=ActionType.VALUE, nth=nth, expected=expected_value, **kwargs)
+        self.track_coverage(action_type=ActionType.VALUE, nth=nth, expected=expected_value, **kwargs)

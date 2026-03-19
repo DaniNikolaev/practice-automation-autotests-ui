@@ -30,9 +30,20 @@ jobs:
         run: |
           pytest -m regression --alluredir=./allure-results --numprocesses 6
 
+      - name: Generate UI Coverage report
+        run: |
+          ui-coverage-tool save-report
+
       - name: Upload Allure report
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: allure-results
           path: allure-results
+
+      - name: Upload UI Coverage report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report
+          path: coverage.html

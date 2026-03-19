@@ -16,6 +16,8 @@ from tools.locators.locator_strategy import LocatorStrategy
 
 
 class FormsPage(BasePage):
+    AUTOMATION_TOOLS_LIST = ['Selenium', 'Playwright', 'Cypress', 'Appium', 'Katalon Studio']
+
     def __init__(self, page: Page):
         super().__init__(page)
 
@@ -44,18 +46,24 @@ class FormsPage(BasePage):
                                                             '#FFC0CB': "color5",
                                                          })
         self.automation_select = Select(page, 'automation', "Automation")
+        self.automation_tools_label = Text(page, "Automation tools", "Form fields automation tools label",
+                                           locator_strategy=LocatorStrategy.TEXT)
+        self.automation_tools = [
+                                Text(page, f'ul li:has-text("{tool}")', f"Form fields {tool} label",
+                                     locator_strategy=LocatorStrategy.CSS)
+                                for tool in self.AUTOMATION_TOOLS_LIST
+                                ]
         self.email_input = Input(page, 'email', "Email")
         self.message_textarea = Textarea(page, 'message', "Message")
         self.submit_button = Button(page, 'submit-btn', "Submit")
         self.footer = FooterComponent(page)
 
-    @allure.step("Check form_field page title and breadcrumbs")
+    @allure.step("Check form_fields title and breadcrumbs")
     def check_title_and_breadcrumbs(self):
         self.title_and_breadcrumbs.check_breadcrumbs_title()
         self.title_and_breadcrumbs.check_page_title()
         self.title_and_breadcrumbs.check_home_link()
 
-    @allure.step("Check form_fields page description")
     def check_description(self):
         self.description_text.check_visible()
         self.description_text.check_have_text("Filling out a web form is one of the most "
@@ -86,11 +94,18 @@ class FormsPage(BasePage):
     def select_option(self, value: str = "yes"):
         self.automation_select.select_by_value(value)
 
+    def get_automation_tools(self) -> str:
+        text = "\n".join(map(lambda x: str(x), self.automation_tools))
+        return text
+
     def fill_email(self, email: str = "test@test.com"):
         self.email_input.fill(email)
 
     def fill_message(self, message: str = "Test message"):
         self.message_textarea.fill(message)
+
+    def click_submit_button(self):
+        self.submit_button.click()
 
     def check_name(self, name: str = "test"):
         self.name_input.check_visible()
@@ -115,6 +130,15 @@ class FormsPage(BasePage):
         self.automation_select.check_visible()
         self.automation_select.check_selected_value(value)
 
+    def check_automation_tools_label(self):
+        self.automation_tools_label.check_visible()
+        self.automation_tools_label.check_have_text("Automation tools")
+
+    def check_automation_tools(self):
+        for i, tool in enumerate(self.automation_tools):
+            tool.check_visible()
+            tool.check_have_text(self.AUTOMATION_TOOLS_LIST[i])
+
     def check_email(self, email: str = "test@test.com"):
         self.email_input.check_visible()
         self.email_input.check_have_value(email)
@@ -122,3 +146,17 @@ class FormsPage(BasePage):
     def check_message(self, message: str = "Test message"):
         self.message_textarea.check_visible()
         self.message_textarea.check_have_value(message)
+
+    def check_submit_button(self):
+        self.submit_button.check_visible()
+        self.submit_button.check_enabled()
+
+    @allure.step("Check form_fields alert popup")
+    def trigger_alert_form(self):
+        def handle_dialog(dialog):
+            assert dialog.type == "alert"
+            assert dialog.message == "Message received!"
+            dialog.accept()
+
+        self.page.once("dialog", handle_dialog)
+        self.submit_button.click()

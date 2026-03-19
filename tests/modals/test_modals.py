@@ -2,10 +2,12 @@ import allure
 import pytest
 
 from pages.modals.modals_page import ModalsPage
+from tools.allure.tags import AllureTag
 
 
 @pytest.mark.regression
 @pytest.mark.modals
+@allure.tag(AllureTag.MODALS)
 class TestModals:
     @allure.title("Test modals title and breadcrumbs")
     def test_modals_title_and_breadcrumbs(self, modals_page: ModalsPage):

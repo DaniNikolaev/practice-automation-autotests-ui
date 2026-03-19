@@ -1,3 +1,5 @@
+import allure
+
 from components.footer.footer_component import FooterComponent
 from components.navbar.navbar_component import NavbarComponent
 from components.title_and_breadcrumbs.title_and_breadcrumbs_component import TitleAndBreadcrumbsComponent
@@ -33,6 +35,7 @@ class PopupsPage(BasePage):
                                    locator_strategy=LocatorStrategy.CSS)
         self.footer = FooterComponent(page)
 
+    @allure.step("Check popups title and breadcrumbs")
     def check_title_and_breadcrumbs(self):
         self.title_and_breadcrumbs.check_breadcrumbs_title()
         self.title_and_breadcrumbs.check_page_title()
@@ -43,6 +46,7 @@ class PopupsPage(BasePage):
                                          "Use this page to practice handling the different type of popups that you "
                                          "may encounter. Click any of the buttons below to see a different popup.")
 
+    @allure.step("Check popups alert popup")
     def trigger_alert_popup(self):
 
         def handle_dialog(dialog):
@@ -53,6 +57,7 @@ class PopupsPage(BasePage):
         self.page.once("dialog", handle_dialog)
         self.alert_popup_button.click()
 
+    @allure.step("Check popups confirm popup accept")
     def trigger_confirm_popup_and_accept(self):
 
         def handle_dialog(dialog):
@@ -65,6 +70,7 @@ class PopupsPage(BasePage):
         self.confirm_popup_result.check_visible()
         self.confirm_popup_result.check_have_text("OK it is!")
 
+    @allure.step("Check popups confirm popup dismiss")
     def trigger_confirm_popup_and_dismiss(self):
 
         def handle_dialog(dialog):
@@ -77,6 +83,7 @@ class PopupsPage(BasePage):
         self.confirm_popup_result.check_visible()
         self.confirm_popup_result.check_have_text("Cancel it is!")
 
+    @allure.step("Check popups prompt popup accept")
     def trigger_prompt_popup_accept(self, test_name: str):
 
         def handle_dialog(dialog):
@@ -90,6 +97,7 @@ class PopupsPage(BasePage):
         self.prompt_popup_result.check_visible()
         self.prompt_popup_result.check_have_text(f"Nice to meet you, {test_name}!")
 
+    @allure.step("Check popups prompt popup dismiss")
     def trigger_prompt_popup_dismiss(self):
 
         def handle_dialog(dialog):

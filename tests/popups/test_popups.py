@@ -2,10 +2,12 @@ import allure
 import pytest
 
 from pages.popups.popups_page import PopupsPage
+from tools.allure.tags import AllureTag
 
 
 @pytest.mark.regression
 @pytest.mark.popups
+@allure.tag(AllureTag.POPUPS)
 class TestPopups:
     @allure.title("Test popups title and breadcrumbs")
     def test_popups_title_and_breadcrumbs(self, popups_page: PopupsPage):

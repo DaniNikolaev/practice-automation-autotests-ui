@@ -1,3 +1,5 @@
+import allure
+
 from components.footer.footer_component import FooterComponent
 from components.navbar.navbar_component import NavbarComponent
 from components.title_and_breadcrumbs.title_and_breadcrumbs_component import TitleAndBreadcrumbsComponent
@@ -30,6 +32,7 @@ class EventsPage(BasePage):
 
         self.footer = FooterComponent(page)
 
+    @allure.step("Check events title and breadcrumbs")
     def check_title_and_breadcrumbs(self):
         self.title_and_breadcrumbs.check_breadcrumbs_title()
         self.title_and_breadcrumbs.check_page_title()

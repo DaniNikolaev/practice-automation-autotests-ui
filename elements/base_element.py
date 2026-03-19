@@ -1,6 +1,6 @@
 from ui_coverage_tool import ActionType, SelectorType
 
-#from elements.ui_coverage import tracker
+from elements.ui_coverage import tracker
 from tools.logger import get_logger
 from tools.locators.locator_strategy import LocatorStrategy
 
@@ -46,10 +46,10 @@ class BaseElement:
         else:
             return locator
 
-    # def track_coverage(self, action_type: ActionType, nth: int = 0, **kwargs):
-    #     tracker.track_coverage(selector=self.get_raw_locator(nth, **kwargs),
-    #                            action_type=action_type,
-    #                            selector_type=SelectorType.XPATH)
+    def track_coverage(self, action_type: ActionType, nth: int = 0, **kwargs):
+        tracker.track_coverage(selector=self.get_raw_locator(nth, **kwargs),
+                               action_type=action_type,
+                               selector_type=SelectorType.XPATH)
 
     def get_playwright_locator(self, locator: str, **kwargs) -> Locator:
         formatted_locator = locator.format(**kwargs)
@@ -63,7 +63,6 @@ class BaseElement:
         elif self.strategy == LocatorStrategy.TEXT:
             return self.page.get_by_text(formatted_locator, exact=False)
         elif self.strategy == LocatorStrategy.ROLE:
-            # Для role можно добавить дополнительные параметры
             return self.page.get_by_role(formatted_locator)
         elif self.strategy == LocatorStrategy.LABEL:
             return self.page.get_by_label(formatted_locator)
@@ -74,7 +73,6 @@ class BaseElement:
         elif self.strategy == LocatorStrategy.TITLE:
             return self.page.get_by_title(formatted_locator)
         else:
-            # По умолчанию используем CSS
             return self.page.locator(formatted_locator)
 
     def get_locator(self, nth: int = 0, **kwargs) -> Locator:
@@ -92,7 +90,7 @@ class BaseElement:
             logger.info(step)
             locator.click()
 
-        #self.track_coverage(action_type=ActionType.CLICK, nth=nth, **kwargs)
+        self.track_coverage(action_type=ActionType.CLICK, nth=nth, **kwargs)
 
     def check_visible(self, nth: int = 0, **kwargs):
         locator = self.get_locator(nth, **kwargs)
@@ -101,7 +99,7 @@ class BaseElement:
             logger.info(step)
             expect(locator).to_be_visible()
 
-        #self.track_coverage(action_type=ActionType.VISIBLE, nth=nth, **kwargs)
+        self.track_coverage(action_type=ActionType.VISIBLE, nth=nth, **kwargs)
 
     def check_not_visible(self, nth: int = 0, **kwargs):
         locator = self.get_locator(nth, **kwargs)
@@ -110,7 +108,7 @@ class BaseElement:
             logger.info(step)
             expect(locator).not_to_be_visible()
 
-        #self.track_coverage(action_type=ActionType.VISIBLE, nth=nth, **kwargs)
+        self.track_coverage(action_type=ActionType.VISIBLE, nth=nth, **kwargs)
 
     def check_have_text(self, text: str, nth: int = 0, **kwargs):
         locator = self.get_locator(nth, **kwargs)
@@ -119,4 +117,4 @@ class BaseElement:
             logger.info(step)
             expect(locator).to_have_text(text)
 
-        #self.track_coverage(action_type=ActionType.TEXT, nth=nth, **kwargs)
+        self.track_coverage(action_type=ActionType.TEXT, nth=nth, **kwargs)
