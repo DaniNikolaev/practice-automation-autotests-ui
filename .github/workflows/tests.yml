@@ -13,7 +13,7 @@ jobs:
 
     steps:
       - name: Check out repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Set up Python
         uses: actions/setup-python@v6
@@ -28,7 +28,7 @@ jobs:
 
       - name: Run UI tests and generate Allure reports
         run: |
-          pytest -m regression --alluredir=./allure-results --numprocesses 6
+          pytest -m regression --alluredir=./allure-results --numprocesses=auto
 
       - name: Generate UI Coverage report
         run: |
@@ -36,14 +36,14 @@ jobs:
 
       - name: Upload Allure report
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: allure-results
           path: allure-results
 
       - name: Upload UI Coverage report
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: coverage-report
           path: coverage.html
