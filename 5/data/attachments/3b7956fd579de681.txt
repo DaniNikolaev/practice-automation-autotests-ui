@@ -1,0 +1,3 @@
+INFO     BASE_PAGE:base_page.py:16 Opening the URL: "AppRoute.EVENTS"
+INFO     BASE_ELEMENT:base_element.py:82 Getting locator with LocatorStrategy.CSS="p.wp-block-paragraph" at index "0"
+INFO     BASE_ELEMENT:base_element.py:117 Checking that Text "Description" at index "0" has text "Click any of the buttons below to see some text. Then, you can write an automated test that clicks any of the buttons and asserts that the expected text is present on the screen."
