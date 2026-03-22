@@ -1,0 +1,21 @@
+INFO     BASE_PAGE:base_page.py:16 Opening the URL: "AppRoute.MAIN"
+INFO     BASE_ELEMENT:base_element.py:82 Getting locator with LocatorStrategy.TEXT="Learn More" at index "0"
+INFO     BASE_ELEMENT:base_element.py:99 Checking that Link "Learn More" at index "0" is visible"
+INFO     BASE_ELEMENT:base_element.py:82 Getting locator with LocatorStrategy.TEXT="About" at index "0"
+INFO     BASE_ELEMENT:base_element.py:99 Checking that Link "About" at index "0" is visible"
+INFO     BASE_ELEMENT:base_element.py:82 Getting locator with LocatorStrategy.CSS="#copyright" at index "0"
+INFO     BASE_ELEMENT:base_element.py:99 Checking that Text "Copyright" at index "0" is visible"
+INFO     BASE_ELEMENT:base_element.py:82 Getting locator with LocatorStrategy.CSS="#to-top" at index "0"
+INFO     BASE_ELEMENT:base_element.py:99 Checking that Link "To top" at index "0" is visible"
+INFO     BASE_ELEMENT:base_element.py:82 Getting locator with LocatorStrategy.TEXT="Learn More" at index "0"
+INFO     BASE_ELEMENT:base_element.py:117 Checking that Link "Learn More" at index "0" has text "Learn More"
+INFO     BASE_ELEMENT:base_element.py:82 Getting locator with LocatorStrategy.TEXT="About" at index "0"
+INFO     BASE_ELEMENT:base_element.py:117 Checking that Link "About" at index "0" has text "About"
+INFO     BASE_ELEMENT:base_element.py:82 Getting locator with LocatorStrategy.CSS="#copyright" at index "0"
+INFO     BASE_ELEMENT:base_element.py:117 Checking that Text "Copyright" at index "0" has text "© 2020-2026 - automateNow, LLC. All rights reserved."
+INFO     BASE_ELEMENT:base_element.py:82 Getting locator with LocatorStrategy.TEXT="Learn More" at index "0"
+INFO     LINK:link.py:19 Checking that Link 'Learn More' has attribute 'https://linktr.ee/automateNow'
+INFO     BASE_ELEMENT:base_element.py:82 Getting locator with LocatorStrategy.TEXT="About" at index "0"
+INFO     LINK:link.py:19 Checking that Link 'About' has attribute 'https://automatenow.io/about/'
+INFO     BASE_ELEMENT:base_element.py:82 Getting locator with LocatorStrategy.CSS="#to-top" at index "0"
+INFO     LINK:link.py:19 Checking that Link 'To top' has attribute '#body'
